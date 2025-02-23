@@ -6,4 +6,5 @@ use App\Http\DTO\JobDTO;
 interface JobRepositoryInterface {
     public function getJobs();
     public function createJobs(JobDTO $jobDTO);
+    public function deleteJobs($titulo);
 }

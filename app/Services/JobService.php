@@ -19,4 +19,8 @@ class JobService {
     public function createJobs(JobDTO $jobDTO){
         return $this->jobRepository->createJobs($jobDTO);
     }
+
+    public function deleteJobs($titulo){
+        return $this->jobRepository->deleteJobs($titulo);
+    }
 }

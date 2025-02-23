@@ -16,4 +16,12 @@ class JobRepository implements JobRepositoryInterface{
             'salario' => $jobDTO->salario
         ]);
     }
+    public function deleteJobs($titulo){
+        $query = Jobs_list::where('titulo', $titulo)->delete();
+
+        if ($query === 0) {
+            return ['success' => false, 'message' => 'Emprego não Encontrado'];
+        }
+        return ['success' => true, 'message' => 'Emprego Excluído'];
+    }
 }

@@ -32,5 +32,13 @@ class JobController extends Controller
 
         return response()->json($job, 201);
     }
+
+    public function delete($titulo){
+
+        $response = $this->jobService->deleteJobs($titulo);
+
+        return response()->json($response);
+
+    }
 }
 
