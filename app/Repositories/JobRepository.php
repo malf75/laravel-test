@@ -11,11 +11,18 @@ class JobRepository implements JobRepositoryInterface{
         return Jobs_list::all();
     }
     public function createJobs(JobDTO $jobDTO){
+
+        $query = Jobs_list::where('titulo', $jobDTO->titulo)->first();
+
+        if ($query !== null){
+            return ['success' => false, 'message' => 'Emprego Já Existe'];
+        }
         return Jobs_list::create([
             'titulo' => $jobDTO->titulo,
             'salario' => $jobDTO->salario
         ]);
     }
+
     public function deleteJobs($titulo){
         $query = Jobs_list::where('titulo', $titulo)->delete();
 

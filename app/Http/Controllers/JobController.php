@@ -33,9 +33,13 @@ class JobController extends Controller
         return response()->json($job, 201);
     }
 
-    public function delete($titulo){
+    public function delete(Request $request){
 
-        $response = $this->jobService->deleteJobs($titulo);
+        $validateData = $request->validate([
+            'titulo' => 'required|string|max:100',
+        ]);
+
+        $response = $this->jobService->deleteJobs($validateData['titulo']);
 
         return response()->json($response);
 
